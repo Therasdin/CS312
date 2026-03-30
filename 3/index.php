@@ -21,6 +21,9 @@
 <header>
     <h1>Twist & Tones</h1>
     <h2>You design it. We dye it.</h2>
+    <p>
+        Twist & Tones is all about turning creativity into something you can wear. We believe every design should be unique, and every piece of clothing should reflect the person behind it. Whether you're planning out colors or bringing a pattern to life, we’re here to help you create something bold, personal, and one of a kind.
+    </p>
 </header>
 
 <section class="what-we-do">
