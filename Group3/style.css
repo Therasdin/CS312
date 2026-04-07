@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: #1A2893;
+}
+
+.navbar
+{
+    background-color: #0E154E;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 40px;
+    border-bottom: 4px solid #FFBB9E;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+ 
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+.navbar ul li a:hover {
+    color: #FFBB9E;
+}
+
+.navbar .logo img {
+    height: 80px;
+    width: auto;
+    margin-right: 40px;
+    display: block;
+}
+
+header {
+    text-align: center;
+    padding: 60px 40px;
+    background-color: #1A2893;
+    border-bottom: 4px solid #FFBB9E;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 8px;
+    color: #F5B3E1;
+}
+
+header h2 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #47E1F5;
+    margin-bottom: 20px;
+}
+ 
+header p {
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: #ffffff;
+}
+
+.what-we-do {
+    padding: 60px 40px;
+    text-align: center;
+    background-color: #0E154E;
+}
+ 
+.what-we-do h2 {
+    font-size: 2rem;
+    margin-bottom: 36px;
+    color: #F5B3E1;
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+ 
+.feature-item {
+    background-color: #f9f3ff;
+    border-radius: 10px;
+    padding: 28px 24px;
+    max-width: 240px;
+    flex: 1 1 200px;
+    border: 4px solid #FFBB9E;
+}
+ 
+.feature-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #A81521;
+}
+ 
+.feature-item p {
+    font-size: 0.95rem;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* About Page Styling */
+.about-header {
+    text-align: center;
+    padding: 60px 40px;
+    background-color: #1A2893;
+    border-bottom: 4px solid #FFBB9E;
+}
+
+.about-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    color: #F5B3E1;
+}
+
+.about-header p {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #47E1F5;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    padding: 60px 40px;
+    background-color: #0E154E;
+}
+
+.team-card {
+    background-color: #f9f3ff;
+    border: 4px solid #FFBB9E;
+    border-radius: 10px;
+    padding: 28px 24px;
+    max-width: 260px;
+    flex: 1 1 200px;
+    text-align: center;
+}
+
+.team-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 14px;
+    border: 4px solid #FFBB9E;
+}
+
+.team-card h3 {
+    font-size: 1.2rem;
+    color: #A81521;
+    margin-bottom: 10px;
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* Hero Logo */
+.hero-logo {
+    height: 120px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+/* Call To Action Button */
+.cta {
+    margin-top: 20px;
+}
+
+.cta a {
+    display: inline-block;
+    background-color: #FFBB9E;
+    color: #0E154E;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.cta a:hover {
+    background-color: #F5B3E1;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0E154E;
+    color: #ffffff;
+    border-top: 4px solid #FFBB9E;
+    font-size: 0.9rem;
+}

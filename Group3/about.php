@@ -14,7 +14,6 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="color.php">Color</a></li>
-        <li><a href="print.php">Print</a></li>
     </ul>
 </nav>
 
@@ -54,5 +53,9 @@
 
 </section>
 
+
+<footer>
+    <p>© 2026 Twist & Tones | Designed by our team</p>
+</footer>
 </body>
 </html>
