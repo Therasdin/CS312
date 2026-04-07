@@ -33,9 +33,11 @@
     </div>
 
     <div class="team-card">
-        <img src="avatar2.png" alt="Person2">
-        <h3>Person2</h3>
-        <p>Person2</p>
+        <img src="Jonny.jpeg" alt="Jonny's Image">
+        <h3>Jonny Adams</h3>
+        <p>I am a currently a student finishing my Bachelor of Science in Computer Science at Colorado State University, 
+            with a goal of pursuing a Masters in Human-computer Interaction. I enjoy game design and development outside 
+            of school, as well as hiking in any free time I have. I've always loved movies, and am a bit of WW2 history nerd.</p>
     </div>
 
     <div class="team-card">
