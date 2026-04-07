@@ -9,7 +9,7 @@
 <body>
 
 <nav class="navbar">
-    <div class="logo">Twist & Tones</div>
+    <div class="logo"><img src="Logo.png" alt="Twist & Tones"></div>
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="about.php">About</a></li>
