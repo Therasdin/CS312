@@ -42,8 +42,8 @@
 
     <div class="team-card">
         <img src="avatar3.png" alt="Person3">
-        <h3>Person3</h3>
-        <p>Person3</p>
+        <h3>Valentine Persing</h3>
+        <p>Howdy! I’m an art history major and computer science minor. I’m currently in my senior year and ready to graduate come fall. I’m pursuing a career in archives and special collections, while currently employed at the CSU library. I love all sorts of arts and crafts and love to keep busy. I’m hoping to make my own costumes and outfits when I get the chance.  </p>
     </div>
 
     <div class="team-card">
