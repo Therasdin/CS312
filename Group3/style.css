@@ -1,3 +1,18 @@
+/* Color Palette:
+    #FFBB9E, #0E154E, #FFFFFF, #000000, #1A2893, #A81521, #F5B3E1, #47E1F5
+*/
+
+/* Contrast using WebAIM:
+    #FFBB9E - #0E154E : 10.39 (Border and Background Color)
+    #FFFFFF - #1A2893 : 11.87 (Text and Background Color)
+    #000000 - #FFFFFF : 21 (Text and Background Color)
+    #A81521 - #FFFFFF : 7.51 (Header Text and Background Color)
+    #F5B3E1 - #0E154E : 10.04 (Header Text and Background Color)
+    #F5B3E1 - #1A2893 : 7.02 (Header Text and Background Color)
+    #47E1F5 - #1A2893 : 7.55 (Header Text and Background Color)
+    #47E1F5 - #0E154E : 10.8 (Header Text and Background Color)
+*/
+
 * {
     margin: 0;
     padding: 0;
