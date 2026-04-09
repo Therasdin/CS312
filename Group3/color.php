@@ -31,7 +31,7 @@
 
     <div class="color-php-logic">
         <?php 
-        $grid = "Display grid.<br>"; 
+        $grid = ""; 
         if(isset($_POST["rowsAndColumns"])){ 
             $numberOfRowsAndColumns = (int)$_POST["rowsAndColumns"];  
             if($numberOfRowsAndColumns >= 1 && $numberOfRowsAndColumns <= 26){ 
@@ -44,7 +44,7 @@
         ?> 
 
         <?php 
-        $colorTable = "Display color table.<br>"; 
+        $colorTable = ""; 
         if(isset($_POST["colors"])){ 
             $numberOfColors = (int)$_POST["colors"];  
             if($numberOfColors >= 1 && $numberOfColors <= 10){ 
