@@ -78,7 +78,7 @@
                     echo '</td>';
 
                     // Right column: color preview (80%)
-                    echo '<td style="width:80%; padding:5px; background-color:'.$initialColors[$i].'; color:#fff;">';
+                    echo '<td style="width:80%; padding:5px; background-color:'.$initialColors[$i].'; color:#000000;">';
                     echo $initialColors[$i];
                     echo '</td>';
 
@@ -97,19 +97,19 @@
                 echo '<table style="border-collapse: collapse; width:100%;">';
 
                 // Top row with letters
-                echo '<tr><td></td>'; // empty top-left
+                echo '<tr><td style="width:30px; height:30px;"></td>'; // empty top-left
                 for($col=0; $col<$n; $col++) {
                     $letter = chr(65 + $col); // A=65
-                    echo '<td style="border: 1px solid #000; text-align:center;">'.$letter.'</td>';
+                    echo '<td style="border: 1px solid #FFBB9E; text-align:center; color: #ffffff">'.$letter.'</td>';
                 }
                 echo '</tr>';
 
                 // Rows with numbers and empty cells
                 for($row=1; $row<=$n; $row++) {
                     echo '<tr>';
-                    echo '<td style="border: 1px solid #000; text-align:center;">'.$row.'</td>'; // left column
+                    echo '<td style="border: 1px solid #FFBB9E; text-align:center; color: #ffffff"; width:30px; height:30px;>'.$row.'</td>'; // left column
                     for($col=1; $col<=$n; $col++) {
-                        echo '<td style="border: 1px solid #000; width:30px; height:30px;"></td>';
+                        echo '<td style="border: 1px solid #FFBB9E; width:30px; height:30px;"></td>';
                     }
                     echo '</tr>';
                 }
