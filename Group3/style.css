@@ -214,6 +214,99 @@ header p {
     transform: scale(1.05);
 }
 
+/* Color Page */
+.color-post-form {
+    background-color: #1A2893;
+    border-bottom: 4px solid #FFBB9E;
+    padding: 40px;
+    text-align: center;
+}
+
+.color-post-form p {
+    display: inline;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.color-post-form input[type="text"] {
+    border: 4px solid #FFBB9E;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    outline: none;
+}
+
+.color-post-form input[type="text"]:focus {
+    border-color: #FFBB9E;
+}
+
+.color-post-form input[type="submit"] {
+    background-color: #47E1F5;
+    color: #000000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: background-color 0.2s;
+}
+
+.color-post-form input[type="submit"]:hover {
+    background-color: #FFBB9E;
+    color: #000000;
+}
+
+/* Color Logic / Grid Area */
+.color-php-logic {
+    padding: 40px;
+}
+
+.color-php-logic h3 {
+    font-size: 1.4rem;
+    color: #F5B3E1;
+    margin-bottom: 16px;
+}
+
+.color-php-logic table {
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    border: 4px solid #FFBB9E;
+}
+
+.color-php-logic table td {
+    border: 4px solid #FFBB9E;
+    text-align: center;
+    padding: 6px;
+}
+
+.color-dropdown {
+    border: 4px solid #FFBB9E;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.95rem;
+    color: #000000;
+    cursor: pointer;
+}
+
+.color-php-logic input[type="submit"] {
+    background-color: #47E1F5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background-color 0.2s;
+}
+
+.color-php-logic input[type="submit"]:hover {
+    background-color: #FFBB9E;
+    color: #000000;
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -222,11 +315,4 @@ footer {
     color: #ffffff;
     border-top: 4px solid #FFBB9E;
     font-size: 0.9rem;
-}
-
-.bottom-logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
 }
