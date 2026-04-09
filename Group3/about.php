@@ -46,9 +46,9 @@
     </div>
 
     <div class="team-card">
-        <img src="avatar4.png" alt="Person4">
-        <h3>Person4</h3>
-        <p>Person4</p>
+        <img src="profile.jpg" alt="Devin's Image">
+        <h3>Devin Dumonceau</h3>
+        <p>I am a Computer Science student hopefully graduating at the end of the semester. I enjoy reading and some video games while the puzzle solving part of programming and code design is what has drawn me in consistently.</p>
     </div>
 
 </section>
