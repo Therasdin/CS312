@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
-<body>
-    
+
+<body style="width: 8.5in; margin: 0 auto;">
+
+	<br>
+	<form method="POST" action="color.php">
+		<input type="submit" value="Return to Color View">
+	</form>
+
+	<div class="logo"><img src="print_Logo.png" alt="Twist & Tones"></div>
+	Print View
+	<br>
+	<br>
+	<?php
+	$rowNumber = (int)$_POST['rows'] ?? 0;
+	$rowColors = json_decode($_POST['colors'] ?? '[]', true);
+	if ($rowNumber == 0 || $rowColors == []) {
+		echo 'Failed to provide number of Rows and Columns or number of Colors. Please retry with both';
+	} else {
+		// ===== STEP 4.3: Top Color Table =====
+		echo '<table id="color-table"; style="width:100%; border-collapse: collapse;">';
+		foreach ($rowColors as $color) {
+			echo '<tr>';
+			// Left column: dropdown (20%)
+			echo '<td style="width:20%; border: 1px solid #000000; padding:5px; background-color:#EEEEEE; color:#000000; ">';
+			echo $color;
+			echo '</td>';
+
+			// Right column: color preview (80%)
+			echo '<td style="width:80%; border: 1px solid #000000; padding:5px; background-color:#FFFFFF; color:#000000;"></td>';
+			echo '</tr>';
+		}
+		echo '</table>';
+
+		// ===== STEP 4.4: Bottom Coordinate Grid =====
+		echo '<h3>Coordinate Grid</h3>';
+		echo '<table id="square-table"; style="border-collapse: collapse;">';
+
+		// Top row with letters
+		echo '<tr><td style="width:30px; height:30px; background-color=#EEEEEE";></td>'; // empty top-left
+		for ($col = 0; $col < $rowNumber; $col++) {
+			$letter = chr(65 + $col); // A=65
+			echo '<td style="border: 1px solid #AEAEAE; background-color=#CCCCCC; text-align:center; color: #000000">' . $letter . '</td>';
+		}
+		echo '</tr>';
+
+		// Rows with numbers and empty cells
+		for ($row = 1; $row <= $rowNumber; $row++) {
+			echo '<tr>';
+			echo '<td style="border: 1px solid #B3B3B3; text-align:center; color: #000000"; width:30px; height:30px;>' . $row . '</td>'; // left column
+			for ($col = 1; $col <= $rowNumber; $col++) {
+				echo '<td style="border: 1px solid #B3B3B3; width:30px; height:30px;"></td>';
+			}
+			echo '</tr>';
+		}
+
+		echo '</table>';
+	}
+	?>
+	<br>
+
 </body>
+
 </html>

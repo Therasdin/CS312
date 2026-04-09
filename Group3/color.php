@@ -63,8 +63,9 @@
             if($numberOfColors >= 1 && $numberOfColors <= 10) {
                 $colorsAvailable = ["Red","Orange","Yellow","Green","Blue","Purple","Grey","Brown","Black","Teal"];
                 $initialColors = array_slice($colorsAvailable, 0, $numberOfColors);
+				$rowColors = $initialColors;
 
-                echo '<table style="width:100%; border-collapse: collapse;">';
+                echo '<table id="color-table"; style="width:100%; border-collapse: collapse;">';
                 for($i=0; $i<$numberOfColors; $i++) {
                     echo '<tr>';
                     // Left column: dropdown (20%)
@@ -94,7 +95,7 @@
             $n = (int)$_POST["rowsAndColumns"];
             if($n >= 1 && $n <= 26) {
                 echo '<h3 style="text-align:center;">Coordinate Grid</h3>';
-                echo '<table style="border-collapse: collapse; margin: 0 auto;">';
+                echo '<table id="square-table"; style="border-collapse: collapse; margin: 0 auto;">';
 
                 // Top row with letters
                 echo '<tr><td style="width:30px; height:30px;"></td>'; // empty top-left
@@ -122,7 +123,8 @@
         <!-- ===== STEP 5: Print Button ===== -->
         <form method="POST" action="print.php">
             <input type="hidden" name="rows" value="<?php echo $n ?? ''; ?>">
-            <input type="hidden" name="colors" value="<?php echo $numberOfColors ?? ''; ?>">
+            <input type="hidden" id="row-colors" name="colors"
+        		value='<?= htmlspecialchars(json_encode($rowColors), ENT_QUOTES, 'UTF-8') ?>'>
             <input type="submit" value="Print View">
         </form>
 
@@ -130,7 +132,7 @@
 </section>
 
 <script>
-document.querySelectorAll('.color-dropdown').forEach(dropdown => {
+document.querySelectorAll('.color-dropdown').forEach((dropdown, i) => {
     dropdown.addEventListener('change', function() {
         let selectedColors = Array.from(document.querySelectorAll('.color-dropdown')).map(d => d.value);
         let duplicates = selectedColors.filter((item, index) => selectedColors.indexOf(item) !== index);
@@ -146,6 +148,10 @@ document.querySelectorAll('.color-dropdown').forEach(dropdown => {
             let previewCell = row.cells[1];
             previewCell.style.backgroundColor = this.value;
             previewCell.textContent = this.value;
+
+			let rowColors = JSON.parse(document.getElementById('row-colors').value);
+			rowColors[i] = this.value;
+			document.getElementById('row-colors').value = JSON.stringify(rowColors)
         }
     });
 });
