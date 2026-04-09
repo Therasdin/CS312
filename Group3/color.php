@@ -93,8 +93,8 @@
         if(isset($_POST["rowsAndColumns"])) {
             $n = (int)$_POST["rowsAndColumns"];
             if($n >= 1 && $n <= 26) {
-                echo '<h3>Coordinate Grid</h3>';
-                echo '<table style="border-collapse: collapse; width:100%;">';
+                echo '<h3 style="text-align:center;">Coordinate Grid</h3>';
+                echo '<table style="border-collapse: collapse; margin: 0 auto;">';
 
                 // Top row with letters
                 echo '<tr><td style="width:30px; height:30px;"></td>'; // empty top-left
