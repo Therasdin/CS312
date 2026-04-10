@@ -292,7 +292,7 @@ header p {
 
 .color-php-logic input[type="submit"] {
     background-color: #47E1F5;
-    color: white;
+    color: #000000;
     border: none;
     border-radius: 6px;
     padding: 8px 20px;
