@@ -34,7 +34,7 @@ $sqlBaseValues = "INSERT INTO colors (id, colorName, hex_value)
                ('Brown', '964B00'), 
                ('Black', '000000'), 
                ('Teal', '008080')";
-$sqlAddColor = "INSERT INTO colors (id, colorName, hex_value) VALUES ($colorNameInput, $hexValInput)";
+$sqlAddColor = "INSERT INTO colors (id, colorName, hex_value) VALUES ($colorName, $hex_value)";
 $sqlFindColor = "SELECT * FROM colors WHERE colorName = $selectedColor"; //run for both add and delete to check for errors
 $sqlDeleteColor = "DELETE FROM colors WHERE colorName = $selectedColor";
 if ($conn->query($sql) === TRUE) {
@@ -45,17 +45,46 @@ $conn->close();
 ?>
 
 <?php 
-//set global var of elements in table
+//set global var of number of elements in table -> $numberOfColors
+
+//Add method
+if(isset($_POST[""])){   
+    //check if color is in database ->  $existingColor = colorName , $existingHexValue = hex_value
+    if($colorName === $existingColor || $hex_value === $existingHexValue){ 
+        echo("This color already exists in the table.");
+    } 
+    if($colorName === null || $hex_value === null){
+        echo("Not enough information. Please enter a name AND hex value.");
+    }
+    else{  
+        $sqlAddColor = "INSERT INTO colors (id, colorName, hex_value) VALUES ($colorName, $hex_value)";
+        } 
+} 
+
+//Edit method
+if(isset($_POST[""])){
+    //check if color is in database 
+    if($selectedColor === $newColorName || ){ 
+        echo("This color already exists in the table.")
+        } 
+    else{ 
+        //update color in table 
+        } 
+} 
+
+//Deletion method
 if(isset($_POST[""])){ 
     $numberOfColors = (int)$_POST["numberOfColors"];  
     if($numberOfColors <= 2){ 
-            //erase color in table  
+          $sqlDeleteColor = "DELETE FROM colors WHERE colorName = $selectedColor";
         } 
         else{ 
             echo("The table cannot have fewer than 2 colors."); 
         } 
 } 
 ?> 
+
+//Add form
 <form method="POST" action="db.php"> 
     <label><p>Color Name:&nbsp;</p></label> 
     <input type="text" name="colorName"></input><br> 
@@ -65,8 +94,9 @@ if(isset($_POST[""])){
     <input type="submit" value="Submit"></input> 
 </form> 
 
+//Edit form
 <form method="POST" action="db.php"> 
-    //change select color to drop down
+    //to do: change select color to drop down
     <label><p>Select Color:&nbsp;</p></label> 
     <input type="text" name="selectedColor"></input><br> 
     <label><p>New Name:&nbsp;</p></label> 
@@ -77,7 +107,9 @@ if(isset($_POST[""])){
     <input type="submit" value="Submit"></input> 
 </form> 
 
+//Deletion form
 <form method="POST" action="db.php"> 
+    //to do: change select color to drop down
     <label><p>Select Color:&nbsp;</p></label> 
     <input type="text" name="selectedColor"></input><br> 
     <label>Delete Selected</label>
