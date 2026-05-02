@@ -34,11 +34,10 @@ $sqlBaseValues = "INSERT INTO colors (id, colorName, hex_value)
                ('Brown', '964B00'), 
                ('Black', '000000'), 
                ('Teal', '008080')";
-$sqlAddColor = "INSERT INTO colors (id, colorName, hex_value) VALUES ($colorName, $hex_value)";
-$sqlFindColor = "SELECT * FROM colors WHERE colorName = $selectedColor"; //run for both add and delete to check for errors
-$sqlDeleteColor = "DELETE FROM colors WHERE colorName = $selectedColor";
 if ($conn->query($sql) === TRUE) {
-//show the table on the webpage
+    if($conn->query($sqlBaseValues) === TRUE){
+        //display table
+    }
 }
 
 $conn->close();
@@ -48,8 +47,11 @@ $conn->close();
 //set global var of number of elements in table -> $numberOfColors
 
 //Add method
-if(isset($_POST[""])){   
+if(isset($_POST['colorName'], $_POST['hex_value'])){   
     //check if color is in database ->  $existingColor = colorName , $existingHexValue = hex_value
+    $sqlFindColor = "SELECT * FROM colors WHERE colorName = $selectedColor";
+    $colorName = $_POST['colorName'];
+    $hex_value = $_POST['hex_value']; 
     if($colorName === $existingColor || $hex_value === $existingHexValue){ 
         echo("This color already exists in the table.");
     } 
@@ -62,19 +64,25 @@ if(isset($_POST[""])){
 } 
 
 //Edit method
-if(isset($_POST[""])){
-    //check if color is in database 
-    if($selectedColor === $newColorName || ){ 
-        echo("This color already exists in the table.")
+if(isset($_POST['selectedColor'], $_POST['newColorName'], $_POST['newHex_value'])){
+    $sqlFindColor = "SELECT * FROM colors WHERE colorName = $selectedColor";
+    $selectedColor = $_POST['selectedColor']; 
+    $newColorName = $_POST['newColorName']; 
+    $newHex_Value = $_POST['newHex_value'];
+    if($selectedColor === $newColorName){ 
+        echo("This color already exists in the table.");
         } 
     else{ 
-        //update color in table 
+        $sqlEditColor = "UPDATE colors 
+                         SET colorName = $newColorName, hex_value = $newHex_value 
+                         WHERE colorName = $selectedColor";
         } 
 } 
 
 //Deletion method
-if(isset($_POST[""])){ 
-    $numberOfColors = (int)$_POST["numberOfColors"];  
+if(isset($_POST['selectedColor'])){ 
+    $selectedColor = $_POST['selectedColor']; 
+    $numberOfColors = (int)$_POST['numberOfColors'];  
     if($numberOfColors <= 2){ 
           $sqlDeleteColor = "DELETE FROM colors WHERE colorName = $selectedColor";
         } 
