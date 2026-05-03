@@ -15,32 +15,36 @@
 	</form>
 
 	<div class="logo"><img src="print_Logo.png" alt="Twist & Tones"></div>
-	Print View
-	<br>
-	<br>
+	<h1>Print View</h1>
 	<?php
 	$rowNumber = (int)$_POST['rows'] ?? 0;
 	$rowColors = json_decode($_POST['colors'] ?? '[]', true);
+	$rowCoords = json_decode($_POST['coords'] ?? '[]', true);
 	if ($rowNumber == 0 || $rowColors == []) {
 		echo 'Failed to provide number of Rows and Columns or number of Colors. Please retry with both';
 	} else {
 		// ===== STEP 4.3: Top Color Table =====
 		echo '<table id="color-table"; style="width:100%; border-collapse: collapse;">';
-		foreach ($rowColors as $color) {
+		echo '<tr>';
+		echo '<th style="width:20%; border: 1px solid #000000; padding:5px; background-color:#CCCCCC; color:#000000; text-align:left; padding-left:20px;"> Color </th>';
+		echo '<th style="width:80%; border: 1px solid #000000; padding:5px; background-color:#CCCCCC; color:#000000;"> Coordinates </th>';
+		for ($i=0; $i < count($rowColors); $i++) { 
 			echo '<tr>';
 			// Left column: dropdown (20%)
-			echo '<td style="width:20%; border: 1px solid #000000; padding:5px; background-color:#EEEEEE; color:#000000; ">';
-			echo $color;
+			echo '<td style="width:20%; border: 1px solid #000000; padding-left:20px; background-color:#EEEEEE; color:#000000;">';
+			echo $rowColors[$i];
 			echo '</td>';
 
 			// Right column: color preview (80%)
-			echo '<td style="width:80%; border: 1px solid #000000; padding:5px; background-color:#FFFFFF; color:#000000;"></td>';
+			echo '<td style="width:80%; border: 1px solid #000000; padding:5px; background-color:#FFFFFF; color:#000000; overflow-wrap: break-word; height: auto; text-align:center;">';
+			echo $rowCoords[$i];
+			echo '</td>';
 			echo '</tr>';
 		}
 		echo '</table>';
 
 		// ===== STEP 4.4: Bottom Coordinate Grid =====
-		echo '<h3>Coordinate Grid</h3>';
+		echo '<br><h3>Coordinate Grid</h3>';
 		echo '<table id="square-table"; style="border-collapse: collapse;">';
 
 		// Top row with letters

@@ -141,10 +141,10 @@
         ?>
 
         <!-- ===== STEP 5: Print Button ===== -->
-        <form method="POST" action="print.php">
+        <form method="POST" id="print" action="print.php">
             <input type="hidden" name="rows" value="<?php echo $n ?? ''; ?>">
-            <input type="hidden" id="row-colors" name="colors"
-        		value='<?= htmlspecialchars(json_encode($rowColors), ENT_QUOTES, 'UTF-8') ?>'>
+			<input type="hidden" id="row-coordinates" name="coords" value = "">
+            <input type="hidden" id="row-colors" name="colors" value="">
             <input type="submit" value="Print View">
         </form>
 
@@ -223,24 +223,24 @@
     document.querySelectorAll('.color-dropdown').forEach((dropdown, i) => {
         dropdown.addEventListener('change', function () {
             const allDropdowns    = Array.from(document.querySelectorAll('.color-dropdown'));
-            const selectedColors  = allDropdowns.map(d => d.value);
-            const hasDuplicate    = selectedColors.some(
-                (val, idx) => val === this.value && idx !== i
-            );
+			previousSelectedColors = [];
+			for (let index = 0; index < allDropdowns.length; index++) {
+				previousSelectedColors.push(allDropdowns[index].dataset.previous);
+			}
+            // const selectedColors  = allDropdowns.map(d => d.value);
+            const hasDuplicate    = previousSelectedColors.includes(this.value);
  
             const warning = document.getElementById('color-warning');
  
             if (hasDuplicate) {
                 // Revert and warn
                 this.value = this.dataset.previous;
-                if (warning) {
-                    warning.textContent = 'This color is already in use. Please choose a different one.';
-                }
+                warning.textContent = 'This color is already in use. Please choose a different one.';
                 return;
             }
  
             // Valid selection — clear any warning
-            if (warning) warning.textContent = '';
+            warning.textContent = '';
  
             const oldColor = this.dataset.previous;
             const newColor = this.value;
@@ -266,6 +266,26 @@
  
     syncHiddenColors();
 })();
+</script>
+
+<script>
+document.getElementById('print').addEventListener("submit", function(event) {
+	//get colors
+	const selects = document.querySelectorAll('.color-dropdown');
+	rowColors = [];
+	for (let index = 0; index < selects.length; index++) {
+		rowColors.push(selects[index].value);
+	}
+	document.getElementById('row-colors').value = JSON.stringify(rowColors);
+
+	//get coordinates
+	coordinates = document.getElementsByClassName("color-coords");
+	row_coordinates = [];
+	for (let index = 0; index < coordinates.length; index++) {
+		row_coordinates[index] = coordinates[index].textContent;
+	}
+	document.getElementById('row-coordinates').value = JSON.stringify(row_coordinates);
+});
 </script>
 
 <footer>
