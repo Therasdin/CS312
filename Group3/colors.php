@@ -184,14 +184,14 @@ $colors = getAllColors($conn);
     <h3>Current Colors</h3>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Hex Value</th>
+            <th style="color:white">Name</th>
+            <th style="color:white">Hex Value</th>
         </tr>
 
         <?php foreach ($colors as $color): ?>
             <tr>
-                <td><?php echo htmlspecialchars($color['name']); ?></td>
-                <td><?php echo htmlspecialchars($color['hex_value']); ?></td>
+                <td style="color:white"><?php echo htmlspecialchars($color['name']); ?></td>
+                <td style="color:white"><?php echo htmlspecialchars($color['hex_value']); ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

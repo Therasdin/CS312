@@ -82,10 +82,10 @@ $rowColors = [];
 
             echo '<thead>';
             echo '<tr>';
-            echo '<th style="width:5%; padding:4px; text-align:center;">Active</th>';
-            echo '<th style="width:20%; padding:4px; text-align:left;">Color</th>';
-            echo '<th style="width:25%; padding:4px; text-align:left;">Preview</th>';
-            echo '<th style="width:50%; padding:4px; text-align:left;">Coordinates</th>';
+            echo '<th style="color:white; width:5%; padding:4px; text-align:center;">Active</th>';
+            echo '<th style="color:white; width:20%; padding:4px; text-align:left;">Color</th>';
+            echo '<th style="color:white; width:25%; padding:4px; text-align:left;">Preview</th>';
+            echo '<th style="color:white; width:50%; padding:4px; text-align:left;">Coordinates</th>';
             echo '</tr>';
             echo '</thead>';
 

@@ -1,8 +1,8 @@
 <?php
 define('DB_HOST', 'helmi.cs.colostate.edu');
-define('DB_USER', 'YOUR_EID');			// EDIT LOCALLY
-define('DB_PASS', 'YOUR_PASSWORD');		// EDIT LOCALLY
-define('DB_NAME', 'YOUR_EID');			// EDIT LOCALLY
+define('DB_USER', 'EID');			// EDIT LOCALLY
+define('DB_PASS', 'Password');		// EDIT LOCALLY
+define('DB_NAME', 'EID');			// EDIT LOCALLY
 
 define('SSL_CERT', '/usr/local/ssl/server-cert.pem');
 define('SSL_CA', '/usr/local/ssl/ca-cert.pem');
