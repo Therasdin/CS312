@@ -14,6 +14,7 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="color.php">Color</a></li>
+        <li><a href="colors.php">Color Selection</a></li>
     </ul>
 </nav>
 
