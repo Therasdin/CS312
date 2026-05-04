@@ -1,4 +1,9 @@
 <?php
+/* THIS FILE IS UNUSED, NOT DELETED FOR PURPOSES OF GIT TRACKING FOR CONTRIUBUTIONS
+*/
+?>
+
+<?php
 define('DB_HOST', 'helmi.cs.colostate.edu');
 define('DB_USER', 'YOUR_NETID');
 define('DB_PASS', 'YOUR_PASSWORD');

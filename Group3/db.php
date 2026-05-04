@@ -1,8 +1,8 @@
 <?php
 define('DB_HOST', 'helmi.cs.colostate.edu');
-define('DB_USER', 'YOUR_EID');
-define('DB_PASS', 'YOUR_PASSWORD');
-define('DB_NAME', 'YOUR_EID');
+define('DB_USER', 'YOUR_EID');			// EDIT LOCALLY
+define('DB_PASS', 'YOUR_PASSWORD');		// EDIT LOCALLY
+define('DB_NAME', 'YOUR_EID');			// EDIT LOCALLY
 
 define('SSL_CERT', '/usr/local/ssl/server-cert.pem');
 define('SSL_CA', '/usr/local/ssl/ca-cert.pem');
@@ -26,14 +26,14 @@ function setupColorsTable($conn) {
             id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(50) NOT NULL UNIQUE,
             hex_value VARCHAR(7) NOT NULL UNIQUE
-        )
+        );
     ";
 
     if (!$conn->query($sql)) {
         die('Could not create colors table: ' . $conn->error);
     }
 
-    $result = $conn->query("SELECT COUNT(*) AS total FROM colors");
+    $result = $conn->query("SELECT COUNT(*) AS total FROM colors;");
     $row = $result->fetch_assoc();
 
     if ((int)$row['total'] === 0) {
@@ -50,7 +50,7 @@ function setupColorsTable($conn) {
             ['Teal', '#008080']
         ];
 
-        $stmt = $conn->prepare("INSERT INTO colors (name, hex_value) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO colors (name, hex_value) VALUES (?, ?);");
 
         foreach ($baseColors as $color) {
             $stmt->bind_param("ss", $color[0], $color[1]);
@@ -61,9 +61,33 @@ function setupColorsTable($conn) {
     }
 }
 
+function restoreDefault($conn) {
+	$clearEntries = 'TRUNCATE TABLE colors;';
+	$conn->query($clearEntries);
+	$restoreDefault = 'INSERT INTO colors (name, hex_value) VALUES (?, ?);';
+	$baseColors = [
+			['Red', '#FF0000'],
+			['Orange', '#FFA500'],
+			['Yellow', '#FFFF00'],
+			['Green', '#008000'],
+			['Blue', '#0000FF'],
+			['Purple', '#800080'],
+			['Grey', '#808080'],
+			['Brown', '#964B00'],
+			['Black', '#000000'],
+			['Teal', '#008080']
+	];
+	$stmt = $conn->prepare($restoreDefault);
+	foreach ($baseColors as $color) {
+		$stmt->bind_param("ss", $color[0], $color[1]);
+		$stmt->execute();
+	}
+	$stmt->close();
+}
+
 function getAllColors($conn) {
     $colors = [];
-    $result = $conn->query("SELECT id, name, hex_value FROM colors ORDER BY id ASC");
+    $result = $conn->query("SELECT id, name, hex_value FROM colors ORDER BY id ASC;");
 
     while ($row = $result->fetch_assoc()) {
         $colors[] = $row;

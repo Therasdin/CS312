@@ -19,11 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("INSERT INTO colors (name, hex_value) VALUES (?, ?)");
             $stmt->bind_param("ss", $name, $hex);
 
-            if ($stmt->execute()) {
-                $message = 'Color added successfully.';
-            } else {
-                $error = 'That color name or hex value already exists.';
-            }
+			try {
+				$stmt->execute();
+				$message = 'Color added successfully.';
+			} catch (mysqli_sql_exception) {
+				$error = 'That color name or hex value already exists.';
+			}
 
             $stmt->close();
         }
@@ -42,11 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("UPDATE colors SET name = ?, hex_value = ? WHERE id = ?");
             $stmt->bind_param("ssi", $name, $hex, $id);
 
-            if ($stmt->execute()) {
-                $message = 'Color updated successfully.';
-            } else {
-                $error = 'That color name or hex value conflicts with another color.';
-            }
+			try {
+				$stmt->execute();
+				$message = 'Color updated successfully.';
+			} catch (mysqli_sql_exception) {
+				$error = 'That color name or hex value conflicts with another color.';
+			}
 
             $stmt->close();
         }
@@ -67,15 +69,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("DELETE FROM colors WHERE id = ?");
             $stmt->bind_param("i", $id);
 
-            if ($stmt->execute()) {
-                $message = 'Color deleted successfully.';
-            } else {
-                $error = 'Unable to delete color.';
-            }
+			try {
+				$stmt->execute();
+				$message = 'Color deleted successfully.';
+			} catch (mysqli_sql_exception) {
+				$error = 'Unable to delete color.';
+			}
 
             $stmt->close();
         }
     }
+
+	if ($action === 'reset') {
+		$confirm = $_POST['confirm_reset'] ?? '';
+		if ($confirm !== 'yes') {
+			$error = 'Please check the confirmation box before resetting.';
+		}
+		restoreDefault($conn);
+	}
 }
 
 $colors = getAllColors($conn);
@@ -158,6 +169,17 @@ $colors = getAllColors($conn);
 
         <input type="submit" value="Delete Color">
     </form>
+
+	<h3>Restore Default Colors<h3>
+	<form method="POST" action="colors.php">
+		<input type="hidden" name="action" value="reset">
+		<label style="color:white; display:block; margin-top:10px;">
+			<input type="checkbox" name="confirm_reset" value="yes">
+			<body>I confirm I want to reset colors to deafult 10 options.</body>
+		</label>
+
+		<input type="submit" value="Reset Color">
+	</form>
 
     <h3>Current Colors</h3>
     <table>
